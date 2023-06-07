@@ -43,6 +43,7 @@ dependencies:
   animated_text_kit: ^4.2.2
   ftoast: ^2.0.0
   fluid_dialog: ^1.1.1
+  timer_count_down: ^2.2.2
 flutter_native_splash:
   image: images/logo.png
   color: "#ffffff"

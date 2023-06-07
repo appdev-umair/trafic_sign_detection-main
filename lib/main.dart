@@ -5,6 +5,7 @@ import 'package:fluid_dialog/fluid_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:ftoast/ftoast.dart';
 import 'package:tflite/tflite.dart';
+import 'package:timer_count_down/timer_count_down.dart';
 
 List<CameraDescription>? cameras;
 Future<void> main(List<String> args) async {
@@ -56,6 +57,50 @@ class HomeScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
+          FToast.toast(
+            context,
+
+            duration: 3000,
+
+            toast: Container(
+              alignment: Alignment.center,
+              height: MediaQuery.of(context).size.height * 0.1,
+              width: MediaQuery.of(context).size.width * 0.8,
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(30)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Your Guardian on the Road",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.deepPurple)),
+                  Countdown(
+                    seconds: 3,
+                    build: (BuildContext context, double time) => CircleAvatar(
+                      backgroundColor: Colors.deepPurple,
+                      child: Text(
+                        time.toString()[0],
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    interval: Duration(seconds: 1),
+                    onFinished: () {
+                      print('Timer is done!');
+                    },
+                  ),
+                ],
+              ),
+            ),
+
+            /// 配置 Msg 样式
+            ///
+            /// set Msg style
+            msgStyle: TextStyle(
+                fontWeight: FontWeight.bold, color: Colors.deepPurple),
+          );
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => Home()),
