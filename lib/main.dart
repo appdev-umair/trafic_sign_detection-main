@@ -293,6 +293,20 @@ class _HomeState extends State<Home> {
       appBar: AppBar(),
       backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: Column(children: [
+       SizedBox(
+          height: MediaQuery.of(context).size.height * 0.1,
+          child: Center(
+            child: Text(
+              output,
+              style: const TextStyle(
+                  color: Colors.deepPurple,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20),
+            ),
+          ),
+        )
+,
+       
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.78,
           width: MediaQuery.of(context).size.width,
@@ -307,19 +321,7 @@ class _HomeState extends State<Home> {
                       child: CameraPreview(cameraController!),
                     ),
         ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.1,
-          child: Center(
-            child: Text(
-              output,
-              style: const TextStyle(
-                  color: Colors.deepPurple,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20),
-            ),
-          ),
-        )
-      ]),
+              ]),
     );
   }
 }
